@@ -16,7 +16,7 @@ function Header({ cart }) {
                             <img className="img-fluid" src="./public/img/carrito.png" alt="imagen carrito" />
 
                             <div id="carrito" className="bg-white p-3">
-                                <p className="text-center">El carrito esta vacio</p>
+                                <p className="text-center">{ cart.length < 1 ? 'El carrito está vacío' : 'Contenido del carrito' }</p>
                                 <table className="w-100 table">
                                     <thead>
                                         <tr>
