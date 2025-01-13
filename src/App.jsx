@@ -14,7 +14,8 @@ function App() {
 
         const itemExists = cart.findIndex(guitar => guitar.id === item.id)
         
-        if ( itemExists >= 0 ) {
+        if( itemExists >= 0 ) {
+            if( cart[itemExists].quantity >= 5 ) return
             const updatedCart = [...cart]
             updatedCart[itemExists].quantity++
             setCart(updatedCart)
@@ -42,6 +43,19 @@ function App() {
         setCart( updatedCart )
     }
 
+    const decreaseQuantity = ( id ) => {
+        const updatedCart = cart.map( item => {
+            if( item.id === id && item.quantity > 1 ) {
+                return {
+                    ...item,
+                    quantity: item.quantity - 1
+                }
+            }
+            return item
+        })
+        setCart( updatedCart )
+    }
+
     return (
         <>
             <Header 
@@ -49,6 +63,7 @@ function App() {
                 cart={ cart }
                 removeFromCart={ removeFromCart }
                 increaseQuantity={ increaseQuantity }
+                decreaseQuantity={ decreaseQuantity }
             />
 
             <main className="container-xl mt-5">
