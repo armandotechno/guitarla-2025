@@ -25,11 +25,17 @@ function App() {
 
     }
 
+    const removeFromCart = ( id ) => {
+        setCart(prevCart => prevCart.filter( guitar => guitar.id !== id ))
+    }
+
     return (
         <>
             <Header 
                 key={ cart.id }
                 cart={ cart }
+                removeFromCart={ removeFromCart }
+
             />
 
             <main className="container-xl mt-5">
