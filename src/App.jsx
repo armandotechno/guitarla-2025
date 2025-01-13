@@ -3,9 +3,12 @@ import { useState, useEffect } from "react"
 import Header from "./components/Header"
 import Guitar from "./components/Guitar"
 import { db } from "./data/db"
+import { useCart } from "../hooks/useCart"
 
 
 function App() {
+
+    useCart()
 
     const initialCart = () => {
         const localStorageCart = localStorage.getItem('cart')
